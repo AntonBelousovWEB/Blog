@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  background-color: #0e0d0d;
+}
+
+.container {
+  max-width: 1270px;
+  padding: 30px;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.search_post {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  max-width: 400px;
+  padding: 10px;
+  background-color: antiquewhite;
+  border-radius: 5px;
+}
+
+.input_box {
+  flex-grow: 1;
+  max-width: 350px;
+  color: black;
+}
+
+.loupe_button::after {
+  content: "\01F50D";
+  display: block;
+}
+
+.title_logo {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.posts_section {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.post {
+  border-radius: 5px;
+  padding: 20px 30px;
+  margin: 0 auto;
+  max-width: 600px;
+  border: 1px solid antiquewhite;
+  cursor: pointer;
+}
+
+.title_post {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.title_post::after {
+  content: " · 03.02.2024";
+  font-size: 15px;
+  color: #989898;
+}
+
+.decsription_post {
+  margin-top: 30px;
+}
+
+.pages_section {
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.pages {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-weight: 600;
+}
+
+.page {
+  background-color: antiquewhite;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.active {
+  padding: 10px;
+}
