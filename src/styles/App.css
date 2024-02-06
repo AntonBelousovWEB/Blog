@@ -19,6 +19,7 @@ body::-webkit-scrollbar-track,
 body {
   background-color: #0e0d0d;
   overflow-x: hidden;
+  word-wrap: break-word; 
 }
 
 .container {
@@ -89,6 +90,7 @@ header {
 .title_post {
   font-size: 18px;
   font-weight: 500;
+  max-width: 100%;
 }
 
 .date_post {
@@ -137,6 +139,38 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.post_title {
+  font-size: 25px;
+  font-weight: 600;
+  display: flex;
+  white-space: normal;
+  align-items: center;
+  gap: 5px;
+}
+
+.post_description {
+  font-size: 18px;
+  margin-top: 50px;
+  letter-spacing: 0.5px;
+  line-height: 25px;
+  color: #cccccc;
+}
+
+.post_title::after {
+  content: "";
+  font-size: 20px;
+  color: #989898;
+  display: block;
+  margin-top: 4px;
+  width: 100vw;
+  height: 2px;
+  background-color: #989898;
+}
+
+.post_title span {
+  color: #989898;
 }
 
 /* Preloader */

@@ -26,10 +26,13 @@ const PostList: React.FC<Props> = ({ posts }) => {
         <Link key={index} to={`/post/${post.id}`}>
           <div className='post'>
             <div className='top_post'>
-              <h1 className='title_post'>{post.title}</h1>
-              <h1 className='date_post'>{"· " + convertDate(post.CreatedAt)}</h1>
+              <h1 className='title_post'>{post.title}
+                <span className='date_post'>{" · " + convertDate(post.CreatedAt)}</span>
+              </h1>
             </div>
-            <h1 className='description_post'>{post.content}</h1>
+            <h1 className='description_post'>
+              {post.content.length > 150 ? post.content.slice(0, 150) + '...' : post.content}  
+            </h1>
           </div>
         </Link>
         
