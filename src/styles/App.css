@@ -83,13 +83,17 @@ header {
   margin-bottom: 120px;
 }
 
+.top_post {
+  display: flex;
+  gap: 5px;
+}
+
 .title_post {
   font-size: 18px;
   font-weight: 500;
 }
 
-.title_post::after {
-  content: " · 03.02.2024";
+.date_post {
   font-size: 15px;
   color: #989898;
 }
