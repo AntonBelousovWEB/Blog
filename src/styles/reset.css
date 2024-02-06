@@ -5,6 +5,10 @@
 	border: none;
 }
 
+a {
+	color: #000;
+}
+
 *,
 *::before,
 *::after {

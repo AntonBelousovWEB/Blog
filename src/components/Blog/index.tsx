@@ -53,7 +53,7 @@ const Blog = () => {
     fetchMaxId();
   }, [cachedMaxId]);
 
-  const totalPages = maxId ? Math.ceil(maxId / perPage) : 1;
+  const totalPages = maxId ? Math.abs(maxId / perPage) : 1;
 
   return (
     <div className='container'>
