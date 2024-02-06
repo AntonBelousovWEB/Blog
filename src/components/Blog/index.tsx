@@ -15,13 +15,15 @@ const Blog = () => {
   const location = useLocation();
   const { page } = useParams<{ page: string | undefined }>();
 
+  const perPage = 4;
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         if (cachedPages[page || '']) {
           setPosts(cachedPages[page || '']);
         } else {
-          const response = await axios.get(`http://localhost:5000/post?page=${page}&perPage=4`);
+          const response = await axios.get(`http://localhost:5000/post?page=${page}&perPage=${perPage}`);
           setPosts(response.data);
           setCachedPages({ ...cachedPages, [page || '']: response.data });
         }
@@ -51,7 +53,7 @@ const Blog = () => {
     fetchMaxId();
   }, [cachedMaxId]);
 
-  const totalPages = maxId ? Math.ceil(maxId / 4) : 1;
+  const totalPages = maxId ? Math.ceil(maxId / perPage) : 1;
 
   return (
     <div className='container'>
