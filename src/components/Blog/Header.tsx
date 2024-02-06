@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
   return (
     <header>
-      <h1 className='title_logo'>A. Blog</h1>
+      <Link className='title_logo' to={'/'}>A. Blog</Link>
       <div className='search_post'>
-        <input className='input_box' type='text' placeholder='Enter the post name...' />
-        <button className='loupe_button'/>
+        <input
+          className='input_box'
+          type='text'
+          placeholder='Enter the post name...'
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button 
+          className='loupe_button' 
+          onClick={() => navigate(`/search/${searchQuery.toLowerCase()}`)} 
+        />
       </div>
     </header>
   );

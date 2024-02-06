@@ -35,7 +35,6 @@ const PostList: React.FC<Props> = ({ posts }) => {
             </h1>
           </div>
         </Link>
-        
       ))}
     </section>
   );
