@@ -67,6 +67,7 @@ header {
 .posts_section {
   animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   margin-top: 100px;
+  margin-bottom: 120px;
 }
 
 .post {
@@ -77,10 +78,7 @@ header {
   border: 1px solid antiquewhite;
   cursor: pointer;
   flex-grow: 1;
-}
-
-.post:last-child {
-  margin-bottom: 120px;
+  color: #fff;
 }
 
 .top_post {

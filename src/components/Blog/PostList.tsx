@@ -1,5 +1,6 @@
 import React from 'react';
 import { Post } from '../../types/Post';
+import { Link } from 'react-router-dom';
 
 interface Props {
   posts: Post[];
@@ -22,13 +23,16 @@ const PostList: React.FC<Props> = ({ posts }) => {
   return (
     <section className='posts_section'>
       {posts.map((post, index) => (
-        <div key={index} className='post'>
-          <div className='top_post'>
-            <h1 className='title_post'>{post.title}</h1>
-            <h1 className='date_post'>{"· " + convertDate(post.CreatedAt)}</h1>
+        <Link key={index} to={`/post/${post.id}`}>
+          <div className='post'>
+            <div className='top_post'>
+              <h1 className='title_post'>{post.title}</h1>
+              <h1 className='date_post'>{"· " + convertDate(post.CreatedAt)}</h1>
+            </div>
+            <h1 className='description_post'>{post.content}</h1>
           </div>
-          <h1 className='description_post'>{post.content}</h1>
-        </div>
+        </Link>
+        
       ))}
     </section>
   );
