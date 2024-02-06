@@ -59,10 +59,10 @@ const Blog = () => {
     <div className='container'>
       <Header />
       {posts.length > 0 ? (
-        <>
+        <div className='content_page'>
           <PostList posts={posts} />
           <Pagination totalPages={totalPages} currentPage={parseInt(page || '1')} />
-        </>
+        </div>
       ) : (
         <div className='wrap'>
           <div className="lds-ripple"><div></div><div></div></div>
