@@ -6,6 +6,7 @@ import Header from './Header';
 import PostList from './PostList';
 import Pagination from './Pagination';
 import { Post } from '../../types/Post';
+import { fetchMaxId, fetchPosts } from '../Fetch';
 
 const Blog = () => {
     const [posts, setPosts] = useState<Post[]>([]);
@@ -18,39 +19,11 @@ const Blog = () => {
     const perPage = 4;
 
     useEffect(() => {
-      const fetchPosts = async () => {
-        try {
-          if (cachedPages[page || '']) {
-            setPosts(cachedPages[page || '']);
-          } else {
-            const response = await axios.get(`http://localhost:5000/post?page=${page}&perPage=${perPage}`);
-            setPosts(response.data);
-            setCachedPages({ ...cachedPages, [page || '']: response.data });
-          }
-        } catch (error) {
-          console.error('Error fetching posts:', error);
-        }
-      };
-
-      fetchPosts();
+        fetchPosts(page, cachedPages, setPosts, setCachedPages);
     }, [page, location, cachedPages]);
 
     useEffect(() => {
-      const fetchMaxId = async () => {
-        try {
-          if (cachedMaxId !== null) {
-            setMaxId(cachedMaxId);
-          } else {
-            const response = await axios.get('http://localhost:5000/post/maxId');
-            setMaxId(response.data.maxId);
-            setCachedMaxId(response.data.maxId);
-          }
-        } catch (error) {
-          console.error('Error fetching maxId:', error);
-        }
-      };
-
-      fetchMaxId();
+        fetchMaxId(cachedMaxId, setMaxId, setCachedMaxId);
     }, [cachedMaxId]);
 
     const totalPages = maxId ? Math.abs(maxId / perPage) : 1;
