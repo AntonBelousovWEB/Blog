@@ -195,6 +195,29 @@ header {
   border-radius: 5px;
 }
 
+.admin_form {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.input_admin {
+  border: 1px solid antiquewhite;
+  padding: 20px;
+  border-radius: 3px;
+}
+
+.admin_button {
+  background-color: #379c00;
+  padding: 10px 20px;
+  color: #0e0d0d;
+  font-weight: 600;
+  border-radius: 3px;
+}
+
 /* Preloader */
 
 .lds-ripple {

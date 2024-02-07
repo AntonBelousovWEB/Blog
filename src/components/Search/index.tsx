@@ -4,7 +4,6 @@ import { Post } from "../../types/Post";
 import axios from "axios";
 import PostList from "../Blog/PostList";
 import Header from "../Blog/Header";
-import Pagination from "../Blog/Pagination";
 
 export default function Search() {
     const { search } = useParams<{ search: string | undefined }>();
