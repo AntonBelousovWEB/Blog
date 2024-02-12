@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useLocation, useParams } from 'react-router-dom';
 import '../../styles/App.css';
 import Header from './Header';

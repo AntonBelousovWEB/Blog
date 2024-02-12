@@ -45,11 +45,14 @@ const Admin: React.FC = () => {
 
   if (loggedIn) {
     return (
-      <div>
-        <h1>Welcome to the App!</h1>
+      <div className='container'>
+        <h1 className='title_admin'>Welcome to the Admin Panel!</h1>
         <button 
-          style={{ color: "#fff", marginBottom: "30px" }} 
-          onClick={handleLogout}>Logout</button>
+          className='admin_button'
+          onClick={handleLogout}
+        >
+          Logout
+        </button>
         <Adminka />
       </div>
     );

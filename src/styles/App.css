@@ -204,10 +204,16 @@ header {
   align-items: center;
 }
 
-.input_admin {
+.input_admin,
+.textarea_admin {
   border: 1px solid antiquewhite;
   padding: 20px;
   border-radius: 3px;
+}
+
+.textarea_admin {
+  resize: vertical;
+  max-width: 500px;
 }
 
 .admin_button {
@@ -216,6 +222,11 @@ header {
   color: #0e0d0d;
   font-weight: 600;
   border-radius: 3px;
+}
+
+.title_admin {
+  margin-bottom: 20px;
+  font-size: 20px;
 }
 
 /* Preloader */
