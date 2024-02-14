@@ -41,9 +41,24 @@ const usePostActions = () => {
     }
   };
 
+  const createPhoto = async (formData: FormData) => {
+    try {
+      const response = await axios.post(`http://localhost:5000/photos`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      setMessage(`Photo successfully created. Photo ID: ${response.data.id}`);
+    } catch (error: any) {
+      setMessage(`Failed to create Photo. ${(error.response && error.response.data.message) || error.message}`);
+      throw error;
+    }
+  };  
+
   return {
     message,
     createPost,
+    createPhoto,
     updatePost,
     deletePost,
   };
