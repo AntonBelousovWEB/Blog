@@ -26,7 +26,12 @@ export default function PostPage() {
             <Header />
             {post ? (
                 <div className="posts_section">
-                    <h1 className="post_title">{post.title}<span>·</span></h1>
+                    <div className="title_wrap">
+                       <h1 className="post_title">{post.title}</h1> 
+                       <span>·</span>
+                       <div></div>
+                    </div>
+                    
                     <h1 className="post_description">{post.content}</h1>
                 </div>
             ) : (

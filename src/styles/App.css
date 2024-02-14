@@ -142,13 +142,17 @@ header {
   justify-content: center;
 }
 
+.title_wrap {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .post_title {
   font-size: 25px;
   font-weight: 600;
-  display: flex;
-  white-space: normal;
-  align-items: center;
-  gap: 5px;
+  max-width: 500px;
+  word-break: break-all;
 }
 
 .post_description {
@@ -159,18 +163,16 @@ header {
   color: #cccccc;
 }
 
-.post_title::after {
-  content: "";
-  font-size: 20px;
+.title_wrap div {
   color: #989898;
-  display: block;
   margin-top: 4px;
   width: 100vw;
   height: 2px;
   background-color: #989898;
 }
 
-.post_title span {
+.title_wrap span {
+  font-size: 32px;
   color: #989898;
 }
 
