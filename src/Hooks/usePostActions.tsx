@@ -4,6 +4,7 @@ import { useState } from 'react';
 interface PostData {
   title: string;
   content: string;
+  photoId?: number;
 }
 
 const usePostActions = () => {

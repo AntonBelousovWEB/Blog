@@ -6,7 +6,7 @@ import axios from "axios";
 
 export default function PostPage() {
     const { postId } = useParams<{ postId: string | undefined }>();
-    const [post, setPost] = useState<Post | null>(null); // Установка начального состояния в null
+    const [post, setPost] = useState<Post | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,7 +31,7 @@ export default function PostPage() {
                        <span>·</span>
                        <div></div>
                     </div>
-                    
+                    <img src={"http://localhost:5000/uploads/" + post && post.photo.filename} alt="" />
                     <h1 className="post_description">{post.content}</h1>
                 </div>
             ) : (
