@@ -155,6 +155,10 @@ header {
   word-break: break-all;
 }
 
+.post_img {
+  margin-top: 50px;
+}
+
 .post_description {
   font-size: 18px;
   margin-top: 50px;

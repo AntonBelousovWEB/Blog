@@ -31,7 +31,13 @@ export default function PostPage() {
                        <span>·</span>
                        <div></div>
                     </div>
-                    <img src={"http://localhost:5000/uploads/" + post && post.photo.filename} alt="" />
+                    {post && post.photo.filename ? (
+                        <img 
+                            className="post_img"
+                            src={`http://localhost:5000/uploads/${post.photo.filename}`} 
+                            alt={String(post.photo.id)}
+                        />
+                    ) : null}
                     <h1 className="post_description">{post.content}</h1>
                 </div>
             ) : (
