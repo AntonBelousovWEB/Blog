@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Header from "../Blog/Header";
 import { Post } from "../../types/Post";
 import axios from "axios";
+import { useFileName } from "../../Hooks/useFileName";
 
 export default function PostPage() {
     const { postId } = useParams<{ postId: string | undefined }>();
     const [post, setPost] = useState<Post | null>(null);
+    const { filename, extension } = useFileName(post?.file.filename ?? '');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,7 +33,7 @@ export default function PostPage() {
                        <span>·</span>
                        <div></div>
                     </div>
-                    {post && post.photo.filename ? (
+                    {post && post.photo ? (
                         <img 
                             className="post_img"
                             src={`http://localhost:5000/uploads/${post.photo.filename}`} 
@@ -39,6 +41,21 @@ export default function PostPage() {
                         />
                     ) : null}
                     <h1 className="post_description">{post.content}</h1>
+                    {post && post.file ? (
+                        <div className="file">
+                            <Link 
+                                className="field" 
+                                to={`http://localhost:5000/uploads/${post.file.filename}`}>
+                                    &#xf019;
+                            </Link>
+                            <div className="text">
+                                { filename.length > 8 ? 
+                                filename.slice(0, 8) + '...' : 
+                                filename }
+                                {extension}
+                            </div>
+                        </div>
+                    ) : null}
                 </div>
             ) : (
                 <div className='wrap'>

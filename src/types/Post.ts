@@ -9,4 +9,5 @@ export interface Post {
     content: string;
     CreatedAt: string;
     photo: Photo;
+    file: Photo;
 }
