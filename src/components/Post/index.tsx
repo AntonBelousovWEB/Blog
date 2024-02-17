@@ -8,7 +8,7 @@ import { useFileName } from "../../Hooks/useFileName";
 export default function PostPage() {
     const { postId } = useParams<{ postId: string | undefined }>();
     const [post, setPost] = useState<Post | null>(null);
-    const { filename, extension } = useFileName(post?.file.filename ?? '');
+    const { filename, extension } = useFileName(post?.file?.filename ?? '');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -42,17 +42,20 @@ export default function PostPage() {
                     ) : null}
                     <h1 className="post_description">{post.content}</h1>
                     {post && post.file ? (
-                        <div className="file">
-                            <Link 
-                                className="field" 
-                                to={`http://localhost:5000/uploads/${post.file.filename}`}>
-                                    &#xf019;
-                            </Link>
-                            <div className="text">
-                                { filename.length > 8 ? 
-                                filename.slice(0, 8) + '...' : 
-                                filename }
-                                {extension}
+                        <div className="file_wrap">
+                            <h1 className="title_file">Sources:</h1>
+                            <div className="file">
+                                <Link 
+                                    className="field" 
+                                    to={`http://localhost:5000/uploads/${post.file.filename}`}>
+                                        &#xf019;
+                                </Link>
+                                <div className="text">
+                                    { filename.length > 8 ? 
+                                    filename.slice(0, 8) + '...' : 
+                                    filename }
+                                    {extension}
+                                </div>
                             </div>
                         </div>
                     ) : null}
