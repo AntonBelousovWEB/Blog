@@ -2,16 +2,27 @@ import axios from 'axios';
 import { Post } from '../../types/Post';
 
 export const fetchPosts = async (
-    page: string | undefined, 
-    cachedPages: { [key: string]: Post[] }, 
+    page: string | undefined,
+    cachedPages: { [key: string]: Post[] },
     setPosts: React.Dispatch<React.SetStateAction<Post[]>>,
-    setCachedPages: React.Dispatch<React.SetStateAction<{ [key: string]: Post[] }>>) => {
+    setCachedPages: React.Dispatch<React.SetStateAction<{ [key: string]: Post[] }>>,
+    selectedTags: string[]
+) => {
     try {
-        if (cachedPages[page || '']) {
+        if (selectedTags.length > 0) {
+            const tagArray = selectedTags.map(
+                (tag) => `tagArray=${encodeURIComponent(tag)}`
+            );
+            const searchTagsURL = `http://localhost:5000/post/searchTags?${tagArray.join('&')}`;
+            const response = await axios.get(searchTagsURL);
+            setPosts(response.data);
+        } else if (cachedPages[page || '']) {
             setPosts(cachedPages[page || '']);
         } else {
             const perPage = 4;
-            const response = await axios.get(`http://localhost:5000/post?page=${page}&perPage=${perPage}`);
+            const response = await axios.get(
+                `http://localhost:5000/post?page=${page}&perPage=${perPage}`
+            );
             setPosts(response.data);
             setCachedPages({ ...cachedPages, [page || '']: response.data });
         }

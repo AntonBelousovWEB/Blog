@@ -14,11 +14,12 @@ const Blog = () => {
     const [cachedMaxId, setCachedMaxId] = useState<number | null>(null);
     const location = useLocation();
     const { page } = useParams<{ page: string | undefined }>();
-
     const perPage = 4;
 
     useEffect(() => {
-        fetchPosts(page, cachedPages, setPosts, setCachedPages);
+        const storedTags = localStorage.getItem('selectedTags');
+        const selectedTags = storedTags ? JSON.parse(storedTags) : [];
+        fetchPosts(page, cachedPages, setPosts, setCachedPages, selectedTags);
     }, [page, location, cachedPages]);
 
     useEffect(() => {
@@ -28,19 +29,19 @@ const Blog = () => {
     const totalPages = maxId ? Math.abs(maxId / perPage) : 1;
 
     return (
-      <div className='container'>
-        <Header />
-        {posts.length > 0 ? (
-          <div className='content_page'>
-            <PostList posts={posts} />
-            <Pagination totalPages={totalPages} currentPage={parseInt(page || '1')} />
-          </div>
-        ) : (
-          <div className='wrap'>
-            <div className="lds-ripple"><div></div><div></div></div>
-          </div>
-        )}
-      </div>
+        <div className='container'>
+            <Header />
+            {posts.length > 0 ? (
+                <div className='content_page'>
+                    <PostList posts={posts} />
+                    <Pagination totalPages={totalPages} currentPage={parseInt(page || '1')} />
+                </div>
+            ) : (
+                <div className='wrap'>
+                    <div className="lds-ripple"><div></div><div></div></div>
+                </div>
+            )}
+        </div>
     );
 }
 
