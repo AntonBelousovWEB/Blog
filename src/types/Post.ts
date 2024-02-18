@@ -10,4 +10,5 @@ export interface Post {
     CreatedAt: string;
     photo: Photo;
     file: Photo;
+    tagsList: string[];
 }

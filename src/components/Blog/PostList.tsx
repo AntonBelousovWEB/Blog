@@ -33,6 +33,11 @@ const PostList: React.FC<Props> = ({ posts }) => {
             <h1 className='description_post'>
               {post.content.length > 150 ? post.content.slice(0, 150) + '...' : post.content}  
             </h1>
+            <div className='tags_post'>
+              {post.tagsList && post.tagsList.map((tag, index) => (
+                <h1 key={index}>#{tag}</h1>
+              ))}
+            </div>
           </div>
         </Link>
       ))}
