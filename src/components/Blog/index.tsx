@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import '../../styles/App.css';
-import Header from './Header';
+import Header from './Header/Header';
 import PostList from './PostList';
 import Pagination from './Pagination';
 import { Post } from '../../types/Post';

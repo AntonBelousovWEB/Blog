@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
-import Header from "../Blog/Header";
+import Header from "../Blog/Header/Header";
 import { Post } from "../../types/Post";
 import axios from "axios";
 import { useFileName } from "../../Hooks/useFileName";

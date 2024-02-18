@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Post } from "../../types/Post";
 import axios from "axios";
 import PostList from "../Blog/PostList";
-import Header from "../Blog/Header";
+import Header from "../Blog/Header/Header";
 
 export default function Search() {
     const { search } = useParams<{ search: string | undefined }>();

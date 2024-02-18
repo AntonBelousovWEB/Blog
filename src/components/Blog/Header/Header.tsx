@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Tags from './Tags';
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -8,6 +9,7 @@ const Header = () => {
   return (
     <header>
       <Link className='title_logo' to={'/'}>A. Blog</Link>
+      <Tags />
       <div className='search_post'>
         <input
           className='input_box'

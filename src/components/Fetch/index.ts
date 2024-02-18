@@ -36,3 +36,20 @@ export const fetchMaxId = async (
         console.error('Error fetching maxId:', error);
     }
 };
+
+export const fetchTags = async (
+    cachedTags: string[] | null, 
+    setTags: React.Dispatch<React.SetStateAction<string[] | null>>, 
+    setCachedTags: React.Dispatch<React.SetStateAction<string[] | null>>) => {
+    try {
+        if (cachedTags !== null) {
+            setTags(cachedTags);
+        } else {
+            const response = await axios.get('http://localhost:3000/tags.json');
+            setTags(response.data.tags);
+            setCachedTags(response.data.tags);
+        }
+    } catch (error) {
+        console.error('Error fetching maxId:', error);
+    }
+}
