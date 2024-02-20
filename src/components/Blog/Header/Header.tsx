@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Tags from './Tags';
+import { AuthContext } from '../../../context/authContext';
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const { user } = useContext(AuthContext)
   const navigate = useNavigate();
+
+  console.log(user);
 
   return (
     <header>
       <Link className='title_logo' to={'/'}>A. Blog</Link>
-      <Tags />
+      {user ? (
+        <Tags />
+      ) : null}
       <div className='search_post'>
         <input
           className='input_box'
@@ -23,10 +29,12 @@ const Header = () => {
           onClick={() => navigate(`/search/${searchQuery.toLowerCase()}`)} 
         />
       </div>
-      <div className='auth_box'>
-        <button className='login_button'>Log In</button>
-        <button className='join_button'>Join</button>
-      </div>
+      {!user ? (
+        <div className='auth_box'>
+          <Link className='login_button' to={'/login'}>Log In</Link>
+          <Link className='join_button' to={'/join'}>Join</Link>
+        </div>
+      ) : null}
     </header>
   );
 };

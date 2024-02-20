@@ -5,6 +5,8 @@ import PostPage from '../Post';
 import Search from '../Search';
 import ErrorPage from '../404';
 import Admin from '../Admin';
+import Login from '../Auth/Login';
+import Join from '../Auth/Join';
 
 export default function Root() {
   return (
@@ -18,6 +20,8 @@ export default function Root() {
         <Route path='/post/:postId' element={<PostPage />} />
         <Route path='/search/:search' element={<Search />} />
         <Route path='/admin' element={<Admin />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/join' element={<Join />} />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
     </Router>

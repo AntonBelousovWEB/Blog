@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../context/authContext';
 
 interface PostData {
   title: string;
@@ -9,6 +10,7 @@ interface PostData {
 
 const usePostActions = () => {
   const [message, setMessage] = useState<string>('');
+  const { login } = useContext(AuthContext);
 
   const createPost = async (postData: PostData): Promise<void> => {
     try {
@@ -56,10 +58,34 @@ const usePostActions = () => {
     }
   };  
 
+  const createAccount = async (email: string, password: string, name: string) => {
+    try {
+      await axios.post(`http://localhost:5000/auth/register`, { email, password, name });
+      setMessage(`Account successfully created.`);
+    } catch (error: any) {
+      setMessage(`Failed to create Account. ${(error.response && error.response.data.message) || error.message}`);
+      throw error;
+    }
+  }
+
+  const loginAccount = async (email: string, password: string, name: string) => {
+    try {
+      const response = await axios.post(`http://localhost:5000/auth/login`, { email, password, name });
+      setMessage(`Successfully Login.`);
+      login(response.data.token)
+      console.log("hello");
+    } catch (error: any) {
+      setMessage(`Failed to login Account. ${(error.response && error.response.data.message) || error.message}`);
+      throw error;
+    }
+  }
+
   return {
     message,
     createPost,
     createPhoto,
+    createAccount,
+    loginAccount,
     updatePost,
     deletePost,
   };
