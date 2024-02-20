@@ -8,8 +8,6 @@ const Header = () => {
   const { user } = useContext(AuthContext)
   const navigate = useNavigate();
 
-  console.log(user);
-
   return (
     <header>
       <Link className='title_logo' to={'/'}>A. Blog</Link>

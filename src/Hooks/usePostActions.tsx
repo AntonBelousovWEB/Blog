@@ -60,8 +60,9 @@ const usePostActions = () => {
 
   const createAccount = async (email: string, password: string, name: string) => {
     try {
-      await axios.post(`http://localhost:5000/auth/register`, { email, password, name });
+      const response = await axios.post(`http://localhost:5000/auth/register`, { email, password, name });
       setMessage(`Account successfully created.`);
+      login(response.data.token);
     } catch (error: any) {
       setMessage(`Failed to create Account. ${(error.response && error.response.data.message) || error.message}`);
       throw error;
@@ -73,7 +74,6 @@ const usePostActions = () => {
       const response = await axios.post(`http://localhost:5000/auth/login`, { email, password, name });
       setMessage(`Successfully Login.`);
       login(response.data.token)
-      console.log("hello");
     } catch (error: any) {
       setMessage(`Failed to login Account. ${(error.response && error.response.data.message) || error.message}`);
       throw error;
