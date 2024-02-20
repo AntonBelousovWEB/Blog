@@ -59,6 +59,17 @@ export default function PostPage() {
                             </div>
                         </div>
                     ) : null}
+                    <div className="comments_section">
+                        <div className="input-comment_wrap">
+                            <input 
+                                className="comment_input" 
+                                placeholder="Enter the comment..." 
+                                type="text"
+                            />
+                            <span>·</span>
+                            <div></div>
+                        </div>
+                    </div>
                 </div>
             ) : (
                 <div className='wrap'>

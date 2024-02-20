@@ -143,7 +143,8 @@ header {
   justify-content: center;
 }
 
-.title_wrap {
+.title_wrap,
+.input-comment_wrap {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -168,7 +169,8 @@ header {
   color: #cccccc;
 }
 
-.title_wrap div {
+.title_wrap div,
+.input-comment_wrap div {
   color: #989898;
   margin-top: 4px;
   width: 100vw;
@@ -176,7 +178,8 @@ header {
   background-color: #989898;
 }
 
-.title_wrap span {
+.title_wrap span,
+.input-comment_wrap span {
   font-size: 32px;
   color: #989898;
 }
@@ -267,6 +270,17 @@ header {
   font-weight: 600;
   font-size: 14px;
   background-color: #989898;
+}
+
+.comments_section {
+  margin-top: 50px;
+}
+
+.comment_input {
+  background-color: antiquewhite;
+  padding: 5px 15px;
+  border-radius: 2px;
+  color: black;
 }
 
 /* Download Files */
