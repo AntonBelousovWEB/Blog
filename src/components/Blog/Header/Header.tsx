@@ -23,6 +23,10 @@ const Header = () => {
           onClick={() => navigate(`/search/${searchQuery.toLowerCase()}`)} 
         />
       </div>
+      <div className='auth_box'>
+        <button className='login_button'>Log In</button>
+        <button className='join_button'>Join</button>
+      </div>
     </header>
   );
 };

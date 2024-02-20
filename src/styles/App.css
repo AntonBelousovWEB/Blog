@@ -283,6 +283,25 @@ header {
   color: black;
 }
 
+.auth_box {
+  display: flex;
+  gap: 20px;
+}
+
+.login_button,
+.join_button {
+  padding: 10px 20px;
+  border-radius: 2px;
+}
+
+.login_button {
+  border: 1px solid antiquewhite;
+}
+
+.join_button {
+  border: 1px solid rgb(255, 171, 60);
+}
+
 /* Download Files */
 
 @font-face {
