@@ -30,11 +30,13 @@ const Blog = () => {
 
     return (
         <div className='container'>
-            <Header />
             {posts.length > 0 ? (
-                <div className='content_page'>
-                    <PostList posts={posts} />
-                    <Pagination totalPages={totalPages} currentPage={parseInt(page || '1')} />
+                <div>
+                    <Header />
+                    <div className='content_page'>
+                        <PostList posts={posts} />
+                        <Pagination totalPages={totalPages} currentPage={parseInt(page || '1')} />
+                    </div>
                 </div>
             ) : (
                 <div className='wrap'>
