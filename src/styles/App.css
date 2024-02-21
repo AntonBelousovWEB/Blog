@@ -333,6 +333,48 @@ header {
   font-weight: 600;
 }
 
+.send {
+  width: 40%;
+  height: 52px;
+  margin-top: 35px;
+}
+
+.send svg {
+  fill: antiquewhite;
+}
+
+.comment {
+  border: 1px solid antiquewhite;
+  padding: 20px 30px;
+}
+
+.comment + .comment {
+  margin-top: 30px;
+}
+
+.user_name-comment {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.content_comment {
+  margin-left: 20px;
+}
+
+.warring,
+.warring a {
+  color: #474747;
+  font-weight: 600;
+}
+
+.warring a {
+  color: antiquewhite;
+}
+
+.loading {
+  margin-top: 50px;
+}
+
 /* Download Files */
 
 @font-face {

@@ -4,6 +4,7 @@ import Header from "../Blog/Header/Header";
 import { Post } from "../../types/Post";
 import axios from "axios";
 import { useFileName } from "../../Hooks/useFileName";
+import Comments from "./Comments";
 
 export default function PostPage() {
     const { postId } = useParams<{ postId: string | undefined }>();
@@ -25,50 +26,42 @@ export default function PostPage() {
 
     return (
         <div className="container">
-            <Header />
             {post ? (
-                <div className="posts_section">
-                    <div className="title_wrap">
-                       <h1 className="post_title">{post.title}</h1> 
-                       <span>·</span>
-                       <div></div>
-                    </div>
-                    {post && post.photo ? (
-                        <img 
-                            className="post_img"
-                            src={`http://localhost:5000/uploads/${post.photo.filename}`} 
-                            alt={String(post.photo.id)}
-                        />
-                    ) : null}
-                    <h1 className="post_description">{post.content}</h1>
-                    {post && post.file ? (
-                        <div className="file_wrap">
-                            <h1 className="title_file">Sources:</h1>
-                            <div className="file">
-                                <Link 
-                                    className="field" 
-                                    to={`http://localhost:5000/uploads/${post.file.filename}`}>
-                                        &#xf019;
-                                </Link>
-                                <div className="text">
-                                    { filename.length > 8 ? 
-                                    filename.slice(0, 8) + '...' : 
-                                    filename }
-                                    {extension}
+                <div>
+                    <Header />
+                    <div className="posts_section">
+                        <div className="title_wrap">
+                           <h1 className="post_title">{post.title}</h1> 
+                           <span>·</span>
+                           <div></div>
+                        </div>
+                        {post && post.photo ? (
+                            <img 
+                                className="post_img"
+                                src={`http://localhost:5000/uploads/${post.photo.filename}`} 
+                                alt={String(post.photo.id)}
+                            />
+                        ) : null}
+                        <h1 className="post_description">{post.content}</h1>
+                        {post && post.file ? (
+                            <div className="file_wrap">
+                                <h1 className="title_file">Sources:</h1>
+                                <div className="file">
+                                    <Link 
+                                        className="field" 
+                                        to={`http://localhost:5000/uploads/${post.file.filename}`}>
+                                            &#xf019;
+                                    </Link>
+                                    <div className="text">
+                                        { filename.length > 8 ? 
+                                        filename.slice(0, 8) + '...' : 
+                                        filename }
+                                        {extension}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ) : null}
-                    <div className="comments_section">
-                        <div className="input-comment_wrap">
-                            <input 
-                                className="comment_input" 
-                                placeholder="Enter the comment..." 
-                                type="text"
-                            />
-                            <span>·</span>
-                            <div></div>
-                        </div>
+                        ) : null}
+                        <Comments />
                     </div>
                 </div>
             ) : (

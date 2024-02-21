@@ -12,3 +12,13 @@ export interface Post {
     file: Photo;
     tagsList: string[];
 }
+
+interface User {
+    name: string
+}
+
+export interface Comment {
+    id: number,
+    content: string,
+    user: User
+}

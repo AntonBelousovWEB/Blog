@@ -80,11 +80,30 @@ const usePostActions = () => {
     }
   }
 
+  const createComment = async (postId: string, content: string) => {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await axios.post(`http://localhost:5000/comments?postId=${postId}`, {
+            content: content
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        setMessage(`Comment Added Successfully!`);
+        login(response.data.token);
+    } catch (error: any) {
+        setMessage(`Failed to add comment. ${(error.response && error.response.data.message) || error.message}`);
+        throw error;
+    }
+  };
+
   return {
     message,
     createPost,
     createPhoto,
     createAccount,
+    createComment,
     loginAccount,
     updatePost,
     deletePost,
